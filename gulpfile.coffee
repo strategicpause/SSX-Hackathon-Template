@@ -2,6 +2,7 @@ path      = require('path')
 gulp      = require('gulp')
 gutil     = require('gulp-util')
 express   = require('express')
+sass      = require('gulp-sass')
 minifyCSS = require('gulp-minify-css')
 clean     = require('gulp-clean')
 watch     = require('gulp-watch')
@@ -17,7 +18,8 @@ webpackConfig = require("./webpack.config.js")
 if gulp.env.production  # i.e. we were executed with a --production option
   webpackConfig.plugins = webpackConfig.plugins.concat(new webpack.optimize.UglifyJsPlugin())
   webpackConfig.output.filename = "main-[hash].js"
-httpPort = 4000
+sassConfig = { includePaths : ['src/styles'] }
+httpPort = 4001
 # paths to files in bower_components that should be copied to dist/assets/vendor
 vendorPaths = ['bootstrap/dist/css/bootstrap.css']
 
@@ -28,6 +30,14 @@ vendorPaths = ['bootstrap/dist/css/bootstrap.css']
 gulp.task 'clean', ->
   gulp.src('dist', {read: false})
   .pipe(clean())
+
+# main.scss should @include any other CSS you want
+gulp.task 'sass', ->
+  gulp.src('src/styles/main.scss')
+  .pipe(sass(sassConfig).on('error', gutil.log))
+  .pipe(if gulp.env.production then minifyCSS() else gutil.noop())
+  .pipe(if gulp.env.production then rev() else gutil.noop())
+  .pipe(gulp.dest('dist/assets'))
 
 # Some JS and CSS files we want to grab from Bower and put them in a dist/assets/vendor directory
 # For example, the es5-sham.js is loaded in the HTML only for IE via a conditional comment.
@@ -57,7 +67,7 @@ gulp.task 'dev', ['build'], ->
       body:
         files: [evt.path]
 
-gulp.task 'build', ['webpack', 'copy', 'vendor'], ->
+gulp.task 'build', ['webpack', 'sass', 'copy', 'vendor'], ->
 gulp.task 'default', ['build'], ->
   # Give first-time users a little help
   setTimeout ->
@@ -71,8 +81,6 @@ gulp.task 'default', ['build'], ->
 #
 # HELPERS
 #
-
-
 # Create both http server and livereload server
 createServers = (port, lrport) ->
   lr = tiny_lr()
@@ -88,4 +96,3 @@ execWebpack = (config) ->
   webpack config, (err, stats) ->
     if (err) then throw new gutil.PluginError("execWebpack", err)
     gutil.log("[execWebpack]", stats.toString({colors: true}))
-
