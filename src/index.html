@@ -1,15 +1,36 @@
+<!DOCTYPE html>
 <html>
-
 <head>
   <title>SSX Tutorial</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="assets/vendor/bootstrap.css" />
   <link rel="stylesheet" href="assets/main.css" />
 </head>
 <body>
-  <div id="app">
-    <p>Hello SSX</p>
+  <div id="content">
+    <ul id="items">
+      <li id="image1" class="active item">
+        <img src="/images/image1-small.jpg"
+             srcset="/images/image1-small.jpg 320w,
+                     /images/image1-medium.jpg 768w,
+                     /images/image1-large.jpg 1024w"
+             alt="Flowers" />
+      </li>
+      <li id="image2" class="item">
+        <img src="/images/image2-small.jpg"
+             srcset="/images/image2-small.jpg 320w,
+                     /images/image2-medium.jpg 768w,
+                     /images/image2-large.jpg 1024w"
+             alt="Landscape" />
+      </li>
+      <li id="image3" class="item">
+        <img src="/images/image3-small.jpg"
+             srcset="/images/image3-small.jpg 320w,
+                     /images/image3-medium.jpg 768w,
+                     /images/image3-large.jpg 1024w"
+             alt="Yachts" />
+      </li>
+    </ul>
   </div>
-  <script type="text/javascript" src="assets/main.js"></script>
+  <script type="text/javascript" src="/assets/main.js"></script>
 </body>
 </html>
