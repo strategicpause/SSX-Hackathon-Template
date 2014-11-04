@@ -1,0 +1,37 @@
+#content {
+  margin-top: 5%;
+}
+
+ul {
+  list-style: none;
+  list-style-type: none;
+  width: 100%;
+  padding: 0px;
+  text-align: center;
+}
+
+li.active {
+  display: block;
+}
+
+.item {
+  display: none;
+}
+
+#controls {
+  margin: 5%;
+}
+
+#next {
+  float: right;
+}
+
+@media (min-width: 720px) {
+  #content, ul {
+    margin: 0px;
+  }
+  #controls {
+    display: none;
+    margin: 0px;
+  }
+}
