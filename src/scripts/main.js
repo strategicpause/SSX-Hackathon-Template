@@ -10,22 +10,20 @@ $('ul#items').swipe({
   swipeRight: function(event, direction, distance, duration, fingerCount, fingerData) {
     previous();
   },
-  tap: function(event, target) {
-    var aboutText = $(target).data('about');
-    $('#about').html(aboutText);
-  },
   threshold: 25
 });
 
 $('button#next').swipe({
   tap: function(event, target) {
     next();
+    event.preventDefault();
   }
 });
 
 $('button#previous').swipe({
   tap: function(event, target) {
     previous();
+    event.preventDefault();
   }
 });
 
