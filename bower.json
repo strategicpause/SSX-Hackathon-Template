@@ -14,6 +14,8 @@
     "tests"
   ],
   "dependencies": {
-    "react": "~0.11.0"
+    "react": "~0.11.0",
+    "jquery-touchswipe": "~1.6.6",
+    "jquery": "~2.1.1"
   }
 }
