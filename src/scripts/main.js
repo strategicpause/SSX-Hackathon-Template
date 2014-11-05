@@ -1,5 +1,5 @@
-require("script!jquery/dist/jquery.js");
-require("script!jquery-touchswipe/jquery.touchSwipe.js");
+var $ = require('jquery');
+$ = require('jquery-touchswipe')($);
 
 $.fn.swipe.defaults.excludedElements = "input, select, textarea, a, .noSwipe";
 

@@ -19,10 +19,12 @@ module.exports = {
   resolve: {
     // Tell webpack to look for required files in bower and node
     modulesDirectories: ['bower_components', 'node_modules'],
+    extensions: ["", ".web.coffee", ".web.js", ".js.coffee", ".coffee", ".js",".json"]
   },
   module: {
     loaders: [
       { test: /\.css/, loader: "style-loader!css-loader" },
+      { test: /\.scss$/, loader: "style!css!sass?outputStyle=expanded" },
       { test: /\.gif/, loader: "url-loader?limit=10000&minetype=image/gif" },
       { test: /\.jpg/, loader: "url-loader?limit=10000&minetype=image/jpg" },
       { test: /\.png/, loader: "url-loader?limit=10000&minetype=image/png" },
@@ -32,7 +34,8 @@ module.exports = {
     noParse: /\.min\.js/
   },
   plugins: [
-    // If you want to minify everything
-    // new webpack.optimize.UglifyJsPlugin()
+    new webpack.ResolverPlugin([
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+    ]),
   ]
 };
