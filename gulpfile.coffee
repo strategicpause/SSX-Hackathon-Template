@@ -19,9 +19,9 @@ if gulp.env.production  # i.e. we were executed with a --production option
   webpackConfig.plugins = webpackConfig.plugins.concat(new webpack.optimize.UglifyJsPlugin())
   webpackConfig.output.filename = "main-[hash].js"
 sassConfig = { includePaths : ['src/styles'] }
-httpPort = 4001
+httpPort = 8080
 # paths to files in bower_components that should be copied to dist/assets/vendor
-vendorPaths = ['bootstrap/dist/css/bootstrap.css']
+vendorPaths = ['bootstrap/dist/css/bootstrap.css', 'bootstrap/dist/css/bootstrap.css.map']
 
 #
 # TASKS
@@ -57,7 +57,7 @@ gulp.task 'webpack', (callback) ->
   callback()
 
 gulp.task 'dev', ['build'], ->
-  servers = createServers(httpPort, 35729)
+  servers = createServers(httpPort, 9090)
   # When /src changes, fire off a rebuild
   gulp.watch ['./src/**/*'], (evt) -> gulp.run 'build'
   # When /dist changes, tell the browser to reload
