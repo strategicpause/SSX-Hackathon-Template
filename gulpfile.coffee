@@ -21,7 +21,7 @@ if gulp.env.production  # i.e. we were executed with a --production option
 sassConfig = { includePaths : ['src/styles'] }
 httpPort = 8080
 # paths to files in bower_components that should be copied to dist/assets/vendor
-vendorPaths = ['bootstrap/dist/css/bootstrap.css']
+vendorPaths = ['bootstrap/dist/css/bootstrap.css', 'bootstrap/dist/css/bootstrap.css.map']
 
 #
 # TASKS
