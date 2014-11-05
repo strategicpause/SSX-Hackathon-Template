@@ -1,5 +1,5 @@
+require('jquery-touchswipe');
 var $ = require('jquery');
-$ = require('jquery-touchswipe')($);
 
 $.fn.swipe.defaults.excludedElements = "input, select, textarea, a, .noSwipe";
 
