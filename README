@@ -1,0 +1,17 @@
+*** Getting started ***
+
+One time (per machine) setup:
+
+(1) Do a system-wide install of node.js (http://nodejs.org/). On OSX with homebrew: `sudo brew install node`
+(2) For convenience, do a system-wide install of bower and gulp: `sudo npm install -g bower gulp`
+
+Project setup:
+
+(1) Clone this repository.
+(2) Do a workspace install of workspace dependencies. This downloads workspace dependencies to ./node_modules and ./bower_components. 'npm install && bower install`
+(3) Start gulp. This compiles artifacts, watches for changes, and starts a dev webserver at localhost:8080.
+(4) Browse to http://localhost:8080.
+
+Device setup:
+
+To browse/debug your dev webserver on a usb-attached android device, see: https://developer.chrome.com/devtools/docs/remote-debugging#reverse-port-forwarding
