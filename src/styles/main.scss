@@ -26,12 +26,3 @@ li.active {
   float: right;
 }
 
-@media (min-width: 720px) {
-  #content, ul {
-    margin: 0px;
-  }
-  #controls {
-    display: none;
-    margin: 0px;
-  }
-}
